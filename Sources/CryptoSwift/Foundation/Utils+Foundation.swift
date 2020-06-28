@@ -2,6 +2,7 @@
 //  CryptoSwift
 //
 //  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2019      Roger Miret Giné    <roger.miret@gmail.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -16,12 +17,16 @@
 import Foundation
 
 func perf(_ text: String, closure: () -> Void) {
-  let measurementStart = Date()
+    let measurementStart = Date()
 
-  closure()
+    closure()
 
-  let measurementStop = Date()
-  let executionTime = measurementStop.timeIntervalSince(measurementStart)
+    let measurementStop = Date()
+    let executionTime = measurementStop.timeIntervalSince(measurementStart)
 
-  print("\(text) \(executionTime)")
+    print("\(text) \(executionTime)")
+}
+
+func rotl(_ a: UInt32, _ b: Int) -> UInt32 {
+    return (a << b) | (a >> (32 - b))
 }
